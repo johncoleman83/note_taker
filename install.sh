@@ -17,14 +17,18 @@ fi
 
 # grab current directory name to use as subdirectory for the installed app
 APP_DIR=$(basename "$SRC_PATH")
+
 # path for sym link to executable
 BIN_PATH="/usr/local/bin"
+
 # location of install directory
 APP_PATH="/opt"
+
 # full install directory
 INSTALL_DIR="${APP_PATH}/${APP_DIR}"
+
 # Executable file
-EXECUTABLE="note.sh"
+EXECUTABLE="note_taker.sh"
 
 echo "* *********************************************************** *"
 echo "*"
@@ -81,12 +85,19 @@ fi
 
 # creates the directory if not already existing /opt/
 mkdir -p /opt/
+
 # Copies Source to /opt/$INSTALL_DIR
 cp -Rv "$SRC_PATH" "$INSTALL_DIR"
+
+# Delete .git from install dir
+rm -rf "$INSTALL_DIR/.git"
+
 # Make installed directories usable by all users.
 find "$INSTALL_DIR" -type d -exec chmod +rx {} \;
+
 # Make installed files readable by all users.
 chmod -R +r "$INSTALL_DIR"
+
 # Allow all users to execute the editor.
 chmod +rx "$INSTALL_DIR/$EXECUTABLE"
 ln -sf "$APP_PATH/$APP_DIR/$EXECUTABLE" "$BIN_PATH/$THE_CMD"

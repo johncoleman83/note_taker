@@ -2,7 +2,6 @@
 #
 # note taker executable
 
-
 NOTE_PAD_PATH="/Users/jcoleman/.johns_notepad.txt"
 
 #######################################
@@ -16,6 +15,17 @@ NOTE_PAD_PATH="/Users/jcoleman/.johns_notepad.txt"
 #######################################
 testing () {
     echo "$#"
+    if [ "$#" == 1 ] && [ "$1" == "-i" ]; then
+        # -i for interactive
+        echo "-i"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    elif [ "$#" == 1 ] && [ "$1" == "-e" ]; then
+        # -e for edit
+        echo "1 = 1"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    else
+        echo "else"
+    fi
     for var in "${@:2}"; do
         echo "$var"
     done
@@ -33,21 +43,28 @@ testing () {
 #   None
 #######################################
 process_notes () {
-    # -i for interactive
-    if [ "$#" == 1 ] && [ "$1" == "-i" ]; then
+    if [[ "$#" == 1 ]] && [[ "$1" == "-i" ]]; then
+        # -i for interactive
+        printf "\n" >> "$NOTE_PAD_PATH"
         date >> "$NOTE_PAD_PATH"
         echo -n "----: " >> "$NOTE_PAD_PATH"
         emacs "$NOTE_PAD_PATH"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    elif [[ "$#" == 1 ]] && [[ "$1" == "-e" ]]; then
+        # -e for edit
+        emacs "$NOTE_PAD_PATH"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
     fi
+    printf "\n" >> "$NOTE_PAD_PATH"
     date >> "$NOTE_PAD_PATH"
     echo "----: $1" >> "$NOTE_PAD_PATH"
 
     # Loop all argv args after first to last
-    for arg in "${@:2}"; do
-        echo "$arg" >> "$NOTE_PAD_PATH"
+    for var in "${@:2}"; do
+        echo "$var" >> "$NOTE_PAD_PATH"
     done
-    echo "" >> "$NOTE_PAD_PATH"
+    printf "\n" >> "$NOTE_PAD_PATH"
 }
 
 process_notes "$@"
+#testing "$@"
