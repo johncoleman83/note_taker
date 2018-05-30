@@ -25,6 +25,18 @@ command for the editor can be specified by user choice during installation or ma
 $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line to document"
 ```
 
+- interactive
+
+```
+$ note -i
+```
+
+- pure edit
+
+```
+$ note -e
+```
+
 # author
 
 - David John Coleman II, http://www.davidjohncoleman.com
