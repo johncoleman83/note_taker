@@ -36,7 +36,9 @@ testing () {
 # Globals:
 #   NOTE_PAD_PATH
 # Arguments:
-#   -i: interactive option
+#   -i: interactive option, adds timestamp
+#   -e: edit file, does not add timestamp
+#   -t N: output $ tail -n (optional N number of lines)
 #   $1: the subject line
 #   $@: all notes
 # Returns:
@@ -53,6 +55,14 @@ process_notes () {
     elif [[ "$#" == 1 ]] && [[ "$1" == "-e" ]]; then
         # -e for edit
         emacs "$NOTE_PAD_PATH"
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    elif [[ "$1" == "-t"* ]]; then
+        # -t N for tail -n N (optional)
+        if [[ -z "$2" ]]; then
+            tail "$NOTE_PAD_PATH"
+        else
+            tail -n $2 "$NOTE_PAD_PATH"
+        fi
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
     fi
     printf "\n" >> "$NOTE_PAD_PATH"
