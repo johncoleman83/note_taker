@@ -6,10 +6,10 @@ a new command, (`$ note`) to help you take notes
 
 Execute the install script with root privileges. Either change directory `cd`
 to the downloaded directory (or local repository): `note_taker`, or use the
-path to the installation file (i.e. ./[PATH_TO_FILE]/install.sh).
+path to the installation file (i.e. ./[PATH_TO_FILE]/install.bash).
 
 ```
-$ sudo ./install.sh
+$ sudo ./install.bash
 ```
 
 - Note: This script creates a copy of the repository in the directory

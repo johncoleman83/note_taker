@@ -3,7 +3,7 @@
 # install script
 
 if [ "$(id -u)" != "0" ]; then
-    echo "Usage: sudo ./install.sh (please use root privileges)"
+    echo "Usage: sudo ./install.bash (please use root privileges)"
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
 fi
 
@@ -28,7 +28,7 @@ APP_PATH="/opt"
 INSTALL_DIR="${APP_PATH}/${APP_DIR}"
 
 # Executable file
-EXECUTABLE="note_taker.sh"
+EXECUTABLE="note_taker.bash"
 
 echo "* *********************************************************** *"
 echo "*"
