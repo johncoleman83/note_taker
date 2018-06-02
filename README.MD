@@ -25,27 +25,25 @@ the editor of your choice.
 This command opens the text editor from any directory. The execution
 command for the editor can be specified by user choice during installation or manually.
 
+- no options to add notes
+
 ```
 $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line to document"
 ```
 
-- interactive, timestamp is added and user prompted to edit file
+## Options
+
+- Usage with options for management
 
 ```
-$ note -i
+$ note [-iet] [N]
 ```
 
-- pure edit, no timestamp added
+**\- i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interactive, timestamp is added and user prompted to edit file
 
-```
-$ note -e
-```
+**\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pure edit, no timestamp added
 
-- output last N lines of notes (N is optional, defaults to 10)
-
-```
-$ note -t N
-```
+**\- t N** &nbsp;&nbsp;&nbsp; output last **N** lines of notes (N is optional, defaults to 10)
 
 # license
 
