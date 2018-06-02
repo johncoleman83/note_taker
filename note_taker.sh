@@ -2,7 +2,7 @@
 #
 # note taker executable
 
-NOTE_PAD_PATH="/Users/jcoleman/.johns_notepad.txt"
+NOTE_PAD_PATH="/$HOME/.notes_for_note_taker.txt"
 
 #######################################
 # Script to test
