@@ -4,6 +4,10 @@
 
 NOTE_PAD_PATH="/$HOME/.notes_for_note_taker.txt"
 
+# editor set this here or through git
+# $ git config --global core.editor "emacs"
+EDITOR=$(git config core.editor || echo 'vim')
+
 #######################################
 # Script to test
 # Globals:
@@ -50,13 +54,13 @@ process_notes () {
         printf "\n" >> "$NOTE_PAD_PATH"
         date >> "$NOTE_PAD_PATH"
         echo -n "----: " >> "$NOTE_PAD_PATH"
-        emacs "$NOTE_PAD_PATH"
+        $EDITOR "$NOTE_PAD_PATH"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
     elif [[ "$#" == 1 ]] && [[ "$1" == "-e" ]]; then
         # -e for edit
-        emacs "$NOTE_PAD_PATH"
+        $EDITOR "$NOTE_PAD_PATH"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
-    elif [[ "$1" == "-t"* ]]; then
+    elif [[ "$1" == "-t" ]]; then
         # -t N for tail -n N (optional)
         if [[ -z "$2" ]]; then
             tail "$NOTE_PAD_PATH"

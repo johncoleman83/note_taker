@@ -8,8 +8,8 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # source path to find current directory and to copy application to /opt/
-SRC_PATH=$(dirname "$0") # path from which install was executed
-SRC_PATH=$(cd "$SRC_PATH" && pwd)  # absolute path
+SRC_DIR=$(dirname "$0") # directory from which install was executed
+SRC_PATH=$(cd "$SRC_DIR" && pwd)  # absolute path
 if [ -z "$SRC_PATH" ]; then
     # exit if for some reason, the path is empty string
     [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -34,7 +34,7 @@ echo "* *********************************************************** *"
 echo "*"
 echo "*   installation steps:"
 echo "*"
-echo "*   (1) copies (or updates) '$APP_DIR' directory to the path:"
+echo "*   (1) copies (or updates) '$SRC_PATH/$EXECUTABLE' to the path:"
 echo "*       '$INSTALL_DIR'"
 echo "*       NOTE: update will use the command:"
 echo "*       $ rm -rf $INSTALL_DIR"
@@ -84,13 +84,10 @@ if [[ -n "$APP_PATH" && -n "${APP_DIR}" && "$INSTALL_DIR" != "/" ]]; then
 fi
 
 # creates the directory if not already existing /opt/
-mkdir -p /opt/
+mkdir -p "$INSTALL_DIR"
 
 # Copies Source to /opt/$INSTALL_DIR
-cp -Rv "$SRC_PATH" "$INSTALL_DIR"
-
-# Delete .git from install dir
-rm -rf "$INSTALL_DIR/.git"
+cp -Rv "$SRC_PATH/$EXECUTABLE" "$INSTALL_DIR"
 
 # Make installed directories usable by all users.
 find "$INSTALL_DIR" -type d -exec chmod +rx {} \;
