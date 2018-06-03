@@ -36,14 +36,20 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-iet] [N]
+$ note [-piet] [N]
 ```
 
-**\- i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; interactive, timestamp is added and user prompted to edit file
+**\- p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+paste, adds pbpaste (clipboard) content to note pad
 
-**\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pure edit, no timestamp added
+**\- i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+interactive, timestamp is added and user prompted to edit file
 
-**\- t N** &nbsp;&nbsp;&nbsp; output last **N** lines of notes (N is optional, defaults to 10)
+**\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+pure edit, no timestamp added
+
+**\- t N** &nbsp;&nbsp;&nbsp;
+output last **N** lines of notes (N is optional, defaults to 10)
 
 # license
 

@@ -36,38 +36,68 @@ testing () {
 }
 
 #######################################
+# Handles options
+# Globals:
+#   NOTE_PAD_PATH
+#   EDITOR
+# Arguments:
+#   -p: paste from pbpaste
+#   -i: interactive option, adds timestamp
+#   -e: edit file, does not add timestamp
+#   -t N: output $ tail -n (optional N number of lines)
+# Returns:
+#   None
+#######################################
+handle_options () {
+    case "$1" in
+        "-p")
+            # -p for paste
+            printf "\n" >> "$NOTE_PAD_PATH"
+            date >> "$NOTE_PAD_PATH"
+            echo -n "(clipboard)--: $(pbpaste)" >> "$NOTE_PAD_PATH"
+            printf "\n" >> "$NOTE_PAD_PATH"
+            ;;
+        "-i")
+            # -i for interactive
+            printf "\n" >> "$NOTE_PAD_PATH"
+            date >> "$NOTE_PAD_PATH"
+            echo -n "----: " >> "$NOTE_PAD_PATH"
+            "$EDITOR" "$NOTE_PAD_PATH"
+            ;;
+        "-e")
+            # -e for edit
+            "$EDITOR" "$NOTE_PAD_PATH"
+            ;;
+        "-t")
+            # -t N for tail -n N (optional)
+            if [[ -z "$2" ]]; then
+                tail "$NOTE_PAD_PATH"
+            else
+                tail -n $2 "$NOTE_PAD_PATH"
+            fi
+            echo ""
+            ;;
+        *)
+            return
+            ;;
+    esac
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+}
+
+#######################################
 # Writes arguments to notepad
 # Globals:
 #   NOTE_PAD_PATH
 # Arguments:
-#   -i: interactive option, adds timestamp
-#   -e: edit file, does not add timestamp
-#   -t N: output $ tail -n (optional N number of lines)
-#   $1: the subject line
+#   $1: the subject line or Options
 #   $@: all notes
 # Returns:
 #   None
 #######################################
 process_notes () {
-    if [[ "$#" == 1 ]] && [[ "$1" == "-i" ]]; then
-        # -i for interactive
-        printf "\n" >> "$NOTE_PAD_PATH"
-        date >> "$NOTE_PAD_PATH"
-        echo -n "----: " >> "$NOTE_PAD_PATH"
-        $EDITOR "$NOTE_PAD_PATH"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
-    elif [[ "$#" == 1 ]] && [[ "$1" == "-e" ]]; then
-        # -e for edit
-        $EDITOR "$NOTE_PAD_PATH"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
-    elif [[ "$1" == "-t" ]]; then
-        # -t N for tail -n N (optional)
-        if [[ -z "$2" ]]; then
-            tail "$NOTE_PAD_PATH"
-        else
-            tail -n $2 "$NOTE_PAD_PATH"
-        fi
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
+    argv_one=${#1}
+    if [[ "$argv_one" == 2 ]]; then
+        handle_options "$@"
     fi
     printf "\n" >> "$NOTE_PAD_PATH"
     date >> "$NOTE_PAD_PATH"
