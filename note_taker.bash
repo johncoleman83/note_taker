@@ -99,7 +99,6 @@ process_notes () {
     if [[ "$argv_one" == 2 ]]; then
         handle_options "$@"
     fi
-    printf "\n" >> "$NOTE_PAD_PATH"
     date >> "$NOTE_PAD_PATH"
     echo "----: $1" >> "$NOTE_PAD_PATH"
 
