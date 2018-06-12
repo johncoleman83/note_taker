@@ -1,6 +1,7 @@
 # `note`
 
-a new command, (`$ note`) to help you take notes
+a new command, (`$ note`) to help you take notes. Gives fast ability to add notes to your
+notes file through the `note` command or open up your selected notes file for an interactive edit.
 
 # installation (Linux / Mac OS)
 
@@ -43,10 +44,10 @@ $ note [-piet] [N]
 paste, adds pbpaste (clipboard) content to note pad
 
 **\- i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-interactive, timestamp is added and user prompted to edit file
+interactive, timestamp is added and user prompted to edit file interactively
 
 **\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-pure edit, no timestamp added
+pure interactive edit of your notes, no timestamp added
 
 **\- t N** &nbsp;&nbsp;&nbsp;
 output last **N** lines of notes (N is optional, defaults to 10)
