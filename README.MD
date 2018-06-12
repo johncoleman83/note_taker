@@ -18,15 +18,16 @@ $ sudo ./install.bash
 is created in the directory `/usr/local/bin/`, which is generally
 designated for user programs not managed by the distribution package manager
 
+- you can specify the command if you don't like `note`
+
 - The editor for interactive and edit options is `emacs`, be sure to change to
 the editor of your choice.
 
 # Usage
 
-This command opens the text editor from any directory. The execution
-command for the editor can be specified by user choice during installation or manually.
+The execution command for the note taker can be specified by user choice during installation or manually.
 
-- no options to add notes
+- usage with no options to add notes
 
 ```
 $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line to document"
