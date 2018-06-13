@@ -25,12 +25,16 @@ the editor of your choice.
 
 # Usage
 
+```
+$ note [pieft] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+```
+
 The execution command for the note taker can be specified by user choice during installation or manually.
 
 - usage with no options to add notes
 
 ```
-$ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line to document"
+$ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line to document" ...
 ```
 
 ## Options
@@ -38,7 +42,7 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-piet] [N]
+$ note [-pieft] [NS]
 ```
 
 **\- p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -49,6 +53,9 @@ interactive, timestamp is added and user prompted to edit file interactively
 
 **\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 pure interactive edit of your notes, no timestamp added
+
+**\- f** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+find string matching **S** (regex enabled) using `grep --color -E S`
 
 **\- t N** &nbsp;&nbsp;&nbsp;
 output last **N** lines of notes (N is optional, defaults to 10)

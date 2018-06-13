@@ -68,6 +68,14 @@ handle_options () {
             # -e for edit
             "$EDITOR" "$NOTE_PAD_PATH"
             ;;
+        "-f")
+            # -f S for find using grep with string match for S
+            if [[ -z "$2" ]]; then
+                echo "Usage: $ note -f 'STRING_TO_FIND'"
+            else
+                cat "$NOTE_PAD_PATH" | grep --color -E "$2"
+            fi
+            ;;
         "-t")
             # -t N for tail -n N (optional)
             if [[ -z "$2" ]]; then
@@ -95,9 +103,11 @@ handle_options () {
 #   None
 #######################################
 process_notes () {
-    argv_one=${#1}
-    if [[ "$argv_one" == 2 ]]; then
+    argv_one_length=${#1}
+    if [[ "$argv_one_length" == 2 ]]; then
         handle_options "$@"
+    elif [[ "$argv_one_length" == 0 ]]; then
+        echo "Usage: $ note [pieft] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ..."
     fi
     date >> "$NOTE_PAD_PATH"
     echo "----: $1" >> "$NOTE_PAD_PATH"
