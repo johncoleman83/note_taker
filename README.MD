@@ -20,8 +20,13 @@ designated for user programs not managed by the distribution package manager
 
 - you can specify the command if you don't like `note`
 
-- The editor for interactive and edit options is `emacs`, be sure to change to
-the editor of your choice.
+- The editor for interactive and edit options is set to the global editor defined in your
+git config file or if unset, it is `vim`. To set your default editor for note command,
+use this command:
+
+```
+git config --global core.editor "emacs"
+```
 
 # Usage
 
@@ -62,6 +67,8 @@ grep --ignore-case --before-context=3 --after-context=3 --color --extended-regex
 
 **\-t N** &nbsp;&nbsp;&nbsp;
 output last **N** lines of notes (N is optional, defaults to 10)
+
+**NOTE:** see the install instructions to set your editor of choice for `-e` and `-i` options
 
 # license
 
