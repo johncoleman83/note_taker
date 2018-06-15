@@ -45,19 +45,22 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 $ note [-pieft] [NS]
 ```
 
-**\- p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**\-p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 paste, adds pbpaste (clipboard) content to note pad
 
-**\- i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**\-i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 interactive, timestamp is added and user prompted to edit file interactively
 
-**\- e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**\-e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 pure interactive edit of your notes, no timestamp added
 
-**\- f** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-find string matching **S** (regex enabled) using `grep --color -E S`
+**\-f S** &nbsp;&nbsp;&nbsp;
+find string matching **S** (regex enabled) using:
+```
+grep --ignore-case --before-context=3 --after-context=3 --color --extended-regexp "$2"
+```
 
-**\- t N** &nbsp;&nbsp;&nbsp;
+**\-t N** &nbsp;&nbsp;&nbsp;
 output last **N** lines of notes (N is optional, defaults to 10)
 
 # license

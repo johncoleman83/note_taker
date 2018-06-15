@@ -73,7 +73,7 @@ handle_options () {
             if [[ -z "$2" ]]; then
                 echo "Usage: $ note -f 'STRING_TO_FIND'"
             else
-                cat "$NOTE_PAD_PATH" | grep --color -E "$2"
+                cat "$NOTE_PAD_PATH" | grep --ignore-case --before-context=3 --after-context=3 --color --extended-regexp "$2"
             fi
             ;;
         "-t")
