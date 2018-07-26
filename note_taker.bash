@@ -108,6 +108,7 @@ process_notes () {
         handle_options "$@"
     elif [[ "$argv_one_length" == 0 ]]; then
         echo "Usage: $ note [pieft] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ..."
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
     fi
     date >> "$NOTE_PAD_PATH"
     echo "----: $1" >> "$NOTE_PAD_PATH"
