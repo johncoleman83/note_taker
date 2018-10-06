@@ -142,9 +142,9 @@ function install_files(){
 
 # Main installation:
 test_for_root_permissions
-establish_user_options
 establish_current_directory
 assign_installation_variables
+establish_user_options
 delete_old_version_if_present
 install_files
 
