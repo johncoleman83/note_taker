@@ -7,13 +7,7 @@ NOTE_PAD_PATH="/$HOME/.notes_for_note_taker.txt"
 # editor set this here or through git
 # $ git config --global core.editor "emacs"
 # Test to see if Git is installed by checking the version, and set the text editor accordingly
-git --version > /dev/null 2>&1
-GIT_IS_AVAILABLE=$?
-if [ $GIT_IS_AVAILABLE -eq 0 ]; then
-	EDITOR=$(git config core.editor)
-else
-	EDITOR='vim'
-fi
+EDITOR=$(git config core.editor 2> /dev/null || echo 'vim')
 
 #######################################
 # Script to test
