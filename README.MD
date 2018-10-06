@@ -77,3 +77,7 @@ MIT License
 # author
 
 - David John Coleman II, http://www.davidjohncoleman.com
+
+# contributors
+
+- Nick Julian, https://github.com/JiveCatDaddyO
