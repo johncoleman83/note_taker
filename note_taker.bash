@@ -6,7 +6,7 @@ NOTE_PAD_PATH="/$HOME/.notes_for_note_taker.txt"
 
 # editor set this here or through git
 # $ git config --global core.editor "emacs"
-EDITOR=$(git config core.editor || echo 'vim')
+EDITOR=$(git config core.editor 2> /dev/null || echo 'vim')
 
 #######################################
 # Script to test
