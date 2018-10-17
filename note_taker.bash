@@ -93,7 +93,7 @@ process_notes () {
     printf "\n" >> "$NOTE_PAD_PATH"
 }
 
-# make sure command is not being sourced
+# make sure `note` command is not being sourced
 if [[ "$0" = "$BASH_SOURCE" ]]; then
     process_notes "$@"
 fi

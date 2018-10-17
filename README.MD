@@ -47,14 +47,14 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-pieft] [NS]
+$ note [-bpeft] [NS]
 ```
+
+**\-b** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`backup`, creates copy of note taker file with a hash extension as a backup
 
 **\-p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `paste`, adds pbpaste (clipboard) content to note pad
-
-**\-i** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-`interactive`, timestamp is added and user prompted to edit file interactively
 
 **\-e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 interactive `edit` of your notes, no timestamp added
