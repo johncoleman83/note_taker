@@ -9,33 +9,6 @@ NOTE_PAD_PATH="/$HOME/.notes_for_note_taker.txt"
 EDITOR=$(git config core.editor 2> /dev/null || echo 'vim')
 
 #######################################
-# Script to test
-# Globals:
-#   NOTE_PAD_PATH
-# Arguments:
-#   $@
-# Returns:
-#   None
-#######################################
-testing () {
-    echo "$#"
-    if [ "$#" == 1 ] && [ "$1" == "-i" ]; then
-        # -i for interactive
-        echo "-i"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
-    elif [ "$#" == 1 ] && [ "$1" == "-e" ]; then
-        # -e for edit
-        echo "1 = 1"
-        [[ "$0" = "$BASH_SOURCE" ]] && exit 0 || return 0
-    else
-        echo "else"
-    fi
-    for var in "${@:2}"; do
-        echo "$var"
-    done
-}
-
-#######################################
 # Handles options
 # Globals:
 #   NOTE_PAD_PATH
@@ -120,5 +93,7 @@ process_notes () {
     printf "\n" >> "$NOTE_PAD_PATH"
 }
 
-process_notes "$@"
-#testing "$@"
+# make sure command is not being sourced
+if [[ "$0" = "$BASH_SOURCE" ]]; then
+    process_notes "$@"
+fi
