@@ -118,10 +118,6 @@ function create_sym_link() {
 
 # Installation procedure
 function main() {
-    echo "$0"
-    echo "$BASH_SOURCE"
-    echo ""
-    echo ""
     root_privileges
     directory_validation
     set_installation_variables
