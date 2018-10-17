@@ -112,15 +112,29 @@ function installed_files_permissions() {
     chmod +rx "$INSTALL_DIR/$EXECUTABLE"
 }
 
-# Installation procedure
-root_privileges
-directory_validation
-set_installation_variables
-installation_output
-continue_installation
-install_directory_safety_checks
-install_files
-installed_files_permissions
+function create_sym_link() {
+    ln -sf "$APP_PATH/$APP_DIR/$EXECUTABLE" "$BIN_PATH/$THE_CMD"
+}
 
-ln -sf "$APP_PATH/$APP_DIR/$EXECUTABLE" "$BIN_PATH/$THE_CMD"
-echo "...Success! Enjoy."
+# Installation procedure
+function main() {
+    echo "$0"
+    echo "$BASH_SOURCE"
+    echo ""
+    echo ""
+    root_privileges
+    directory_validation
+    set_installation_variables
+    installation_output
+    continue_installation
+    install_directory_safety_checks
+    install_files
+    installed_files_permissions
+    create_sym_link
+    echo "...Success! Enjoy."
+}
+
+# make sure script is not being sourced but instead executed
+if [[ "$0" = "$BASH_SOURCE" ]]; then
+    main
+fi
