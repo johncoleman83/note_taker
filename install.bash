@@ -33,7 +33,7 @@ function set_installation_variables() {
     EXECUTABLE="note_taker.bash"
 }
 
-function installation_output() {
+function installation_output_message() {
     echo "* *********************************************************** *"
     echo "*"
     echo "*   installation steps:"
@@ -55,13 +55,13 @@ function installation_output() {
     echo "*           NOTE: Be sure to specify a UNIQUE name"
     echo "*"
     echo "* *********************************************************** *"
+}
+
+function installation_prompt_user_for_input() {
     echo ""
     echo "Type 'y' or 'Y' to continue, or anything else to quit"
     read -p "Continue ? " -n 1 -r INSTALL_REPLY
     echo ""
-}
-
-function continue_installation() {
     if [[ ! "$INSTALL_REPLY" =~ ^[Yy]$ ]]; then
         echo "...Goodbye"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -121,8 +121,8 @@ function main() {
     root_privileges
     directory_validation
     set_installation_variables
-    installation_output
-    continue_installation
+    installation_output_message
+    installation_prompt_user_for_input
     install_directory_safety_checks
     install_files
     installed_files_permissions
