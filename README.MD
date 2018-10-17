@@ -81,3 +81,4 @@ MIT License
 # contributors
 
 - Nick Julian, https://github.com/JiveCatDaddyO
+- Luis E. Jiménez, https://github.com/luisejrobles
