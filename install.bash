@@ -3,14 +3,14 @@
 # install script
 
 # check root privileges
-root_privileges() {
+function root_privileges() {
     if [ "$(id -u)" != "0" ]; then
         echo "Usage: sudo ./install.bash (please use root privileges)"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
     fi
 }
 
-directory_validation() {
+function directory_validation() {
     # source path to find current directory and to copy application to /opt/
     SRC_DIR=$(dirname "$0") # directory from which install was executed
     SRC_PATH=$(cd "$SRC_DIR" && pwd)  # absolute path
@@ -20,7 +20,7 @@ directory_validation() {
     fi
 }
 
-set_installation_variables(){
+function set_installation_variables() {
     # grab current directory name to use as subdirectory for the installed app
     APP_DIR=$(basename "$SRC_PATH")
     # path for sym link to executable
@@ -33,7 +33,7 @@ set_installation_variables(){
     EXECUTABLE="note_taker.bash"
 }
 
-installation_output() {
+function installation_output() {
     echo "* *********************************************************** *"
     echo "*"
     echo "*   installation steps:"
@@ -61,7 +61,7 @@ installation_output() {
     echo ""
 }
 
-continue_installation() {
+function continue_installation() {
     if [[ ! "$INSTALL_REPLY" =~ ^[Yy]$ ]]; then
         echo "...Goodbye"
         [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
@@ -80,11 +80,12 @@ continue_installation() {
     fi
 }
 
-install_directory_safety_checks() {
+function install_directory_safety_checks() {
     # Go over board to avoid "rm -rf /"; e.g. APP_PATH is set above, testing anyway.
     if [[ -z "$APP_PATH" || -z "${APP_DIR}" || "$INSTALL_DIR" == "/" ]]; then
-    echo "Something is incorrect about the install directory. Exiting."
-    exit -1
+        echo "Something is incorrect about the install directory. Exiting."
+        # exit since there could be something wrong
+        [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
     fi
     # Yes, this is redundant with the above. User safety is top priority.
     # Only continues to delete if directory exists and is not root '/'
@@ -93,7 +94,7 @@ install_directory_safety_checks() {
     fi
 }
 
-install_files() {
+function install_files() {
     # creates the directory if not already existing /opt/
     mkdir -p "$INSTALL_DIR"
 
@@ -101,7 +102,7 @@ install_files() {
     cp -Rv "$SRC_PATH/$EXECUTABLE" "$INSTALL_DIR"
 }
 
-installed_files_permissions() {
+function installed_files_permissions() {
     # Make installed directories usable by all users.
     find "$INSTALL_DIR" -type d -exec chmod +rx {} \;
 
@@ -110,7 +111,6 @@ installed_files_permissions() {
     # Allow all users to execute the editor.
     chmod +rx "$INSTALL_DIR/$EXECUTABLE"
 }
-
 
 # Installation procedure
 root_privileges
