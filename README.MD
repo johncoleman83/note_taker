@@ -31,7 +31,7 @@ git config --global core.editor "emacs"
 # Usage
 
 ```
-$ note [bpieftacu] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+$ note [bpeftacu] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
 ```
 
 The execution command for the note taker can be specified by user choice during installation or manually.
