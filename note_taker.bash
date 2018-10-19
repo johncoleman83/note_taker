@@ -61,6 +61,22 @@ handle_options () {
 	    # -a for all: pipes the whole notes file through less for quick, easy viewing
 	    cat "$NOTE_PAD_PATH" | less
 	    ;;
+	"-c")
+	    # -c for 'clear notes'
+	    # confirm user intention
+	    read -p "Clear all notes [y/n]? " -n 1 -r CLEAR_REPLY
+	    echo ""
+            # exit if not confirmed
+	    if [[ ! "$CLEAR_REPLY" =~ ^[Yy]$ ]]; then
+	    	echo "Cancelled."
+	    else 
+            	# clear notes file by overwriting it with blankness:
+		> "$NOTE_PAD_PATH"
+		# report success
+		echo "Cleared."
+	    fi
+            echo ""
+	    ;;
         *)
             echo "$1 looks like an argument, please use a valid argument"
             echo "$USAGE_STRING"

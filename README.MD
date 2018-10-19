@@ -31,7 +31,7 @@ git config --global core.editor "emacs"
 # Usage
 
 ```
-$ note [bpiefta] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+$ note [bpieftac] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
 ```
 
 The execution command for the note taker can be specified by user choice during installation or manually.
@@ -47,7 +47,7 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-bpefta] [NS]
+$ note [-bpeftac] [NS]
 ```
 
 **\-b** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,6 +72,9 @@ grep --ignore-case --before-context=3 --after-context=3 --color --extended-regex
 
 **\-a** &nbsp;&nbsp;&nbsp;
 `all` pipes the entire notes file through less for quick analysis
+
+**\-c** &nbsp;&nbsp;&nbsp;
+`clear` clears all notes in the notes file
 
 # license
 
