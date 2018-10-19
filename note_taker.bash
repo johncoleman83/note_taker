@@ -77,7 +77,45 @@ handle_options () {
 	    fi
             echo ""
 	    ;;
-        *)
+	"-u")
+	    # -u for 'undo': deletes the most recent note. Specifically, it deletes lines starting
+            # with the next-to-last line and moving upwards through the file, until the next blank
+            # line it encounters.
+	    # confirm user intention
+	    read -p "Clear most recent note [y/n]? " -n 1 -r CLEAR_REPLY
+	    echo ""
+            # exit if not confirmed
+	    if [[ ! "$CLEAR_REPLY" =~ ^[Yy]$ ]]; then
+	    	echo "Cancelled."
+	    else 
+        	# get the total number of lines in the notes file
+		LINES=`cat "$NOTE_PAD_PATH" | wc -l`
+		# get the penultimate line, as the last line is always blank
+		((LINES--))
+		# get the text of the penultimate line and assign it to LINE_TEXT
+		LINE_NUMBER=$LINES
+		# get the text of the penultimate line and assign it to LINE_TEXT
+		LINE_TEXT=`tail -n +"$LINE_NUMBER" "$NOTE_PAD_PATH" | head -n 1`
+		# as long as LINE_TEXT is not empty and LINE_NUMBER is not 0
+		until [ -z "$LINE_TEXT" ] || [ "$LINE_NUMBER" -eq 0 ]; do
+			# delete the last line of the notes file by copying a shortened version
+			# to a temp file and then overwriting the original with the temp
+			head -n -1 "$NOTE_PAD_PATH" > temp.txt
+			mv temp.txt "$NOTE_PAD_PATH"
+			# decrement the current variable for the current line number
+			((LINE_NUMBER--))
+			# get the text of the new last line
+			LINE_TEXT=`tail -n +"$LINE_NUMBER" "$NOTE_PAD_PATH" | head -n 1`
+		done
+		# outside of the loop we need to delete one more line to complete the clear process
+		head -n -1 "$NOTE_PAD_PATH" > temp.txt
+		mv temp.txt "$NOTE_PAD_PATH"
+		# report success
+		echo "Cleared."
+	    fi
+ 	    echo ""
+	    ;;
+	*)
             echo "$1 looks like an argument, please use a valid argument"
             echo "$USAGE_STRING"
             ;;

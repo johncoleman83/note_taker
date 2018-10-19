@@ -31,7 +31,7 @@ git config --global core.editor "emacs"
 # Usage
 
 ```
-$ note [bpieftac] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+$ note [bpieftacu] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
 ```
 
 The execution command for the note taker can be specified by user choice during installation or manually.
@@ -47,7 +47,7 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-bpeftac] [NS]
+$ note [-bpeftacu] [NS]
 ```
 
 **\-b** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -75,6 +75,12 @@ grep --ignore-case --before-context=3 --after-context=3 --color --extended-regex
 
 **\-c** &nbsp;&nbsp;&nbsp;
 `clear` clears all notes in the notes file
+
+**\-u** &nbsp;&nbsp;&nbsp;
+`undo` deletes the most recent note in the notes file. Specifically, it deletes the next-to-last
+line and continues deleting lines upwards until it enounters another blank line. This works well
+with notes made using the program prompt but may produce unexpected results if the notes file has
+been interactively edited and no longer follows the default formatting.
 
 # license
 
