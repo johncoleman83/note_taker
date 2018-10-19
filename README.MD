@@ -31,7 +31,7 @@ git config --global core.editor "emacs"
 # Usage
 
 ```
-$ note [pieft] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+$ note [bpiefta] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
 ```
 
 The execution command for the note taker can be specified by user choice during installation or manually.
@@ -47,7 +47,7 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-bpeft] [NS]
+$ note [-bpefta] [NS]
 ```
 
 **\-b** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -69,6 +69,9 @@ grep --ignore-case --before-context=3 --after-context=3 --color --extended-regex
 `tail` output last **N** lines of notes (N is optional, defaults to 10)
 
 **NOTE:** see the install instructions to set your editor of choice for `-e` and `-i` options
+
+**\-a** &nbsp;&nbsp;&nbsp;
+`all` pipes the entire notes file through less for quick analysis
 
 # license
 

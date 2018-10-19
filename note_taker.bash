@@ -57,6 +57,10 @@ handle_options () {
             fi
             echo ""
             ;;
+	"-a")
+	    # -a for all: pipes the whole notes file through less for quick, easy viewing
+	    cat "$NOTE_PAD_PATH" | less
+	    ;;
         *)
             echo "$1 looks like an argument, please use a valid argument"
             echo "$USAGE_STRING"
