@@ -62,6 +62,8 @@ $ note [-abcefptu] [NS]
 **\-e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 interactive `edit` of your notes, no timestamp added
 
+**NOTE:** see the install instructions to set your editor of choice for `-e`
+
 **\-f S** &nbsp;&nbsp;&nbsp;
 `find` string matching **S** (regex enabled) using:
 
@@ -74,8 +76,6 @@ grep --ignore-case --before-context=3 --after-context=3 --color --extended-regex
 
 **\-t N** &nbsp;&nbsp;&nbsp;
 `tail` output last **N** lines of notes (N is optional, defaults to 10)
-
-**NOTE:** see the install instructions to set your editor of choice for `-e` and `-i` options
 
 **\-u** &nbsp;&nbsp;&nbsp;
 `undo` deletes the most recent note in the notes file. Specifically, it deletes the
