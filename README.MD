@@ -31,7 +31,7 @@ git config --global core.editor "emacs"
 # Usage
 
 ```
-$ note [bpeftacu] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
+$ note [abcefptu] [NS] [<SUBJECT>] [<MESSAGE_LINE_1>] [<MESSAGE_LINE_2>] ...
 ```
 
 The execution command for the note taker can be specified by user choice during installation or manually.
@@ -47,40 +47,42 @@ $ note "<A_NEAT_SUBJECT_GOES_HERE>" "This one line of a Note" "and another line 
 - Usage with options for management
 
 ```
-$ note [-bpeftacu] [NS]
+$ note [-abcefptu] [NS]
 ```
+
+**\-a** &nbsp;&nbsp;&nbsp;
+`all` pipes the entire notes file through less for quick analysis
 
 **\-b** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 `backup`, creates copy of note taker file with a hash extension as a backup
 
-**\-p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-`paste`, adds pbpaste (clipboard) content to note pad
+**\-c** &nbsp;&nbsp;&nbsp;
+`clear` clears all notes in the notes file
 
 **\-e** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 interactive `edit` of your notes, no timestamp added
 
 **\-f S** &nbsp;&nbsp;&nbsp;
 `find` string matching **S** (regex enabled) using:
+
 ```
 grep --ignore-case --before-context=3 --after-context=3 --color --extended-regexp "$2"
 ```
+
+**\-p** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+`paste`, adds pbpaste (clipboard) content to note pad
 
 **\-t N** &nbsp;&nbsp;&nbsp;
 `tail` output last **N** lines of notes (N is optional, defaults to 10)
 
 **NOTE:** see the install instructions to set your editor of choice for `-e` and `-i` options
 
-**\-a** &nbsp;&nbsp;&nbsp;
-`all` pipes the entire notes file through less for quick analysis
-
-**\-c** &nbsp;&nbsp;&nbsp;
-`clear` clears all notes in the notes file
-
 **\-u** &nbsp;&nbsp;&nbsp;
-`undo` deletes the most recent note in the notes file. Specifically, it deletes the next-to-last
-line and continues deleting lines upwards until it enounters another blank line. This works well
-with notes made using the program prompt but may produce unexpected results if the notes file has
-been interactively edited and no longer follows the default formatting.
+`undo` deletes the most recent note in the notes file. Specifically, it deletes the
+text-to-last line and continues deleting lines upwards until it enounters another blank
+line. This works well with notes made using the program prompt but may produce unexpected
+results if the notes file has been interactively edited and no longer follows the default
+formatting.
 
 # license
 
