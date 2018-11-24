@@ -5,6 +5,14 @@ notes file through the `note` command or open up your selected notes file for an
 
 # installation (Linux / Mac OS)
 
+* create the notes file storage. If you would like another file storage path, then
+you should use a new path and also update the `note_taker.bash` file with the correct
+NOTE_PAD_PATH
+
+```
+$ touch $HOME/.notes_for_note_taker.txt
+```
+
 Execute the install script with root privileges. Either change directory `cd`
 to the downloaded directory (or local repository): `note_taker`, or use the
 path to the installation file (i.e. ./[PATH_TO_FILE]/install.bash).
